@@ -6,8 +6,8 @@ function _createModal(options) {
     'afterbegin',
     `
         <div class="modal-overlay" data-close='true'>
-            <div data-content class="modal-window" style="width: ${
-              options.width || DEFAULT_WIDTH
+            <div data-content class="modal-window" style="max-width: ${
+              options.maxWidth || DEFAULT_WIDTH
             };">
             </div>
         </div>

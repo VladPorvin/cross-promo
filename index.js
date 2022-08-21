@@ -39,7 +39,7 @@ function render() {
 render();
 
 const hotelModal = $.modal({
-  width: '57em',
+  maxWidth: '57em',
 });
 
 const listItems = document.querySelectorAll('.list__item');
@@ -87,14 +87,17 @@ document.addEventListener('click', (event) => {
 });
 
 if (window.innerWidth <= 480) {
-  document.querySelector('.welcomeText').addEventListener('click', () => {
+  const welcomeText = document.querySelector('.welcomeText');
+  const listItems = document.querySelectorAll('.list__item');
+
+  welcomeText.addEventListener('click', () => {
     if (document.querySelector('.list__item').classList.contains('open')) {
-      document.querySelectorAll('.list__item').forEach((el) => {
+      listItems.forEach((el) => {
         el.classList.remove('open');
         el.classList.add('hide');
       });
     } else {
-      document.querySelectorAll('.list__item').forEach((el) => {
+      listItems.forEach((el) => {
         el.classList.add('open');
         el.classList.remove('hide');
       });
