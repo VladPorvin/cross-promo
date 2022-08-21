@@ -144,8 +144,7 @@
   text-align: center;
   margin-bottom: 10px;
 }
-.list {
-}
+
 .list__item {
   margin-bottom: 10px;
   display: flex;
@@ -188,4 +187,15 @@
 }
 .hotelStar {
   height: 15px;
+}
+@media (max-width: 480px) {
+  .list__item {
+    display: none;
+  }
+  .list__item.open {
+    display: flex;
+  }
+  .list__item.hide {
+    display: none;
+  }
 }

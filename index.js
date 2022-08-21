@@ -85,3 +85,19 @@ document.addEventListener('click', (event) => {
     }
   }
 });
+
+if (window.innerWidth <= 480) {
+  document.querySelector('.welcomeText').addEventListener('click', () => {
+    if (document.querySelector('.list__item').classList.contains('open')) {
+      document.querySelectorAll('.list__item').forEach((el) => {
+        el.classList.remove('open');
+        el.classList.add('hide');
+      });
+    } else {
+      document.querySelectorAll('.list__item').forEach((el) => {
+        el.classList.add('open');
+        el.classList.remove('hide');
+      });
+    }
+  });
+}
