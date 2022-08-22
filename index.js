@@ -7,7 +7,7 @@ const hotels = [
     text: 'В отеле “Журавли”, который находится в Джемете, можно отдохнуть по системе “Все включено”: питание “шведский стол”, крытые и открытые подогреваемые бассейны, детская анимация, площадка и комната с воспитателем, своя зеленая территория с беседками и мангальной зоной, бесплатный wi-fi. Пляж и море в 15 минутах ходьбы.',
     stars: 3,
     img: 'https://admin.upro.group/uploads/zhuravli_slider_crosspromo_1_4bad6c10a9.jpg',
-    utmMark: '',
+    utmMark: 'https://zhuravli-hotel.ru/?utm_source=galapalmira&utm_medium=crosspromo/',
   },
   {
     id: 2,
@@ -20,6 +20,27 @@ const hotels = [
     utmMark: '',
   },
 ];
+function responsiveLeftBlock() {
+  if (window.innerWidth <= 480) {
+    const welcomeText = document.querySelector('.welcomeText');
+    const listItems = document.querySelectorAll('.list__item');
+
+    welcomeText.addEventListener('click', () => {
+      if (document.querySelector('.list__item').classList.contains('open')) {
+        listItems.forEach((el) => {
+          el.classList.remove('open');
+          el.classList.add('hide');
+        });
+      } else {
+        listItems.forEach((el) => {
+          el.classList.add('open');
+          el.classList.remove('hide');
+        });
+      }
+    });
+  }
+}
+responsiveLeftBlock();
 
 const toHTML = (hotel) => `
 <li class="list__item" data-id="${hotel.id}">
@@ -28,7 +49,6 @@ const toHTML = (hotel) => `
   </div>
   <p>${hotel.name}</p>
 </li>
-
 `;
 
 function render() {
@@ -45,7 +65,7 @@ const hotelModal = $.modal({
 const listItems = document.querySelectorAll('.list__item');
 
 document.addEventListener('click', (event) => {
-  event.preventDefault();
+  // event.preventDefault();
   let id = +event.target.dataset.id || +event.target.parentNode.dataset.id;
   if (id) {
     const hotel = hotels.find((h) => h.id === id);
@@ -60,7 +80,7 @@ document.addEventListener('click', (event) => {
         </div>
         <p class="modal-descr">${hotel.descr}</p>
         <div class="modal-btns">
-          <a class="modal-more btn" href="#">Подробнее</a>
+          <a class="modal-more btn" href=${hotel.utmMark}>Подробнее</a>
           <a class="modal-reserv btn" href="#">Забронировать</a>
         </div>
       </div>
@@ -85,22 +105,4 @@ document.addEventListener('click', (event) => {
     }
   }
 });
-
-if (window.innerWidth <= 480) {
-  const welcomeText = document.querySelector('.welcomeText');
-  const listItems = document.querySelectorAll('.list__item');
-
-  welcomeText.addEventListener('click', () => {
-    if (document.querySelector('.list__item').classList.contains('open')) {
-      listItems.forEach((el) => {
-        el.classList.remove('open');
-        el.classList.add('hide');
-      });
-    } else {
-      listItems.forEach((el) => {
-        el.classList.add('open');
-        el.classList.remove('hide');
-      });
-    }
-  });
-}
+responsiveLeftBlock();

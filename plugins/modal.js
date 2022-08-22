@@ -23,7 +23,6 @@ $.modal = function (options) {
   const $modal = _createModal(options);
   let closing = false;
   let destroyed = false;
-
   const modal = {
     open() {
       if (destroyed) {

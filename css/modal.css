@@ -1,8 +1,5 @@
 @import url('./reset.css');
 
-.modal {
-}
-
 .modal.open .modal-overlay,
 .modal.open .modal-window {
   opacity: 1;
@@ -240,7 +237,7 @@
     text-align: left;
     margin-right: 0;
     margin-bottom: 15px;
-    font-size: 15px;
+    font-size: 13px;
     line-height: 18px;
   }
 }
